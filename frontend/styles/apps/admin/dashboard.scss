@@ -1,0 +1,39 @@
+.d-item {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+
+  .pi {
+    font-size: 4em;
+    margin-bottom: 15px;
+  }
+
+  .name {
+    font-size: 1.4em;
+  }
+
+  .number {
+    margin-top: 50px;
+    font-size: 2.5em;
+  }
+}
+
+.d-orders {
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+}
+
+.d-products {
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+}
+
+.d-users {
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+}
+
+.d-totalsales {
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+}

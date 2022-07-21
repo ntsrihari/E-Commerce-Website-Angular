@@ -1,0 +1,40 @@
+@font-face {
+  font-family: 'MKBHDTitle';
+  font-style: bold;
+  font-weight: 400;
+  src: url(https://dbrand.com/sites/all/themes/dbrand_v3/dist/fonts/56525e010910c33329a3.woff2)
+    format('woff2');
+}
+
+.login-register {
+  background-image: url('./ICONS_Grey.png');
+  height: 100vh;
+  &-panel {
+    width: 650px;
+    backdrop-filter: blur(20px);
+    animation: glow 10s infinite alternate;
+    border-radius: 16px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.01);
+    color: white;
+    height: 525px;
+    position: absolute;
+    left: calc(50% - 325px);
+    top: calc(50% - 260px);
+    .full-btn {
+      width: 100%;
+    }
+  }
+}
+
+.su-button {
+  background-color: #464646;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px -10px rgb(5, 5, 5);
+  }
+  to {
+    box-shadow: 0 0 100px 10px #464646;
+  }
+}
