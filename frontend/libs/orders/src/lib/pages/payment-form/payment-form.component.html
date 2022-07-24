@@ -1,135 +1,147 @@
-<div class="container">
-  <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()" novalidate>
-    <div class="form-group">
-      <label class="p-mb-2">Name on Card</label>
-      <input
-        class="form-control"
-        type="text"
-        formControlName="nameOnCard"
-        placeholder="Name"
-        [ngClass]="{
-          'is-invalid':
-            (f.nameOnCard.dirty || f.nameOnCard.touched) && f.nameOnCard.errors
-        }"
-      />
-      <div
-        *ngIf="
-          !f.nameOnCard.valid && (f.nameOnCard.dirty || f.nameOnCard.touched)
-        "
-        class="invalid-feedback"
-      >
-        <div *ngIf="f.nameOnCard.errors" class="alert alert-danger">
-          Invalid Cardholder Name.
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group p-mt-3">
-      <label class="p-mb-2">Card Number</label>
-      <p-inputMask
-        class="form-control"
-        mask="9999-9999-9999-9999"
-        formControlName="cardNumber"
-        formControlName="phone"
-        placeholder="XXX-XXX-XXX-XXXX"
-        [ngClass]="{
-          'is-invalid':
-            f.cardNumber.errors && (f.cardNumber.dirty || f.cardNumber.touched)
-        }"
-      ></p-inputMask>
-      <div
-        *ngIf="
-          !f.cardNumber.valid && (f.cardNumber.dirty || f.cardNumber.touched)
-        "
-        class="invalid-feedback"
-      >
-        <div *ngIf="f.cardNumber.errors" class="alert alert-danger">
-          Invalid Card Number.
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group expiry p-mt-3">
-      <label class="p-mb-2">Date of Expiration</label>
-      <div class="p-grid">
-        <div class="p-col-2">
-          <div class="box">
-            <input
-              class="form-control month"
-              type="number"
-              formControlName="expirationMonth"
-              placeholder="MM"
-              [ngClass]="{
-                'is-invalid':
-                  !f.expirationMonth.valid &&
-                  (f.expirationMonth.dirty || f.expirationMonth.touched)
-              }"
-            />
-          </div>
-        </div>
-        <div class="p-col-2">
-          <div class="box">
-            <input
-              class="form-control year"
-              type="number"
-              formControlName="expirationYear"
-              placeholder="YYYY"
-              [ngClass]="{
-                'is-invalid':
-                  f.expirationYear.errors &&
-                  (f.expirationYear.dirty || f.expirationYear.touched)
-              }"
-            />
-          </div>
-        </div>
-      </div>
-      <div
-        *ngIf="
-          (!f.expirationMonth.valid &&
-            (f.expirationMonth.dirty || f.expirationMonth.touched)) ||
-          (!f.expirationYear.valid &&
-            (f.expirationYear.dirty || f.expirationYear.touched))
-        "
-        class="invalid-feedback"
-      >
+<body>
+  <div class="container">
+    <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()" novalidate>
+      <div class="form-group">
+        <label class="p-mb-2">Name on Card</label>
+        <input
+          class="form-control"
+          type="text"
+          formControlName="nameOnCard"
+          placeholder="Name"
+          [ngClass]="{
+            'is-invalid':
+              (f.nameOnCard.dirty || f.nameOnCard.touched) &&
+              f.nameOnCard.errors
+          }"
+        />
         <div
-          *ngIf="f.expirationMonth.errors || f.expirationYear.errors"
-          class="alert alert-danger"
+          *ngIf="
+            !f.nameOnCard.valid && (f.nameOnCard.dirty || f.nameOnCard.touched)
+          "
+          class="invalid-feedback"
+          style="max-width: 500px"
         >
-          Invalid Date of Expiration.
+          <div *ngIf="f.nameOnCard.errors" class="alert alert-danger">
+            Invalid Cardholder Name.
+          </div>
         </div>
       </div>
-    </div>
+      <div class="form-group p-mt-3">
+        <label class="p-mb-2">Card Number</label>
 
-    <div class="form-group cvc p-mt-3">
-      <label class="p-mb-2">CVV/CVC</label>
-      <input
-        class="form-control"
-        type="number"
-        formControlName="cardCVVNumber"
-        placeholder="Enter 3-Digit CVV"
-        [ngClass]="{
-          'is-invalid':
-            f.cardCVVNumber.errors &&
-            (f.cardCVVNumber.dirty || f.cardCVVNumber.touched)
-        }"
-      />
-      <div
-        *ngIf="
-          !f.cardCVVNumber.valid &&
-          (f.cardCVVNumber.dirty || f.cardCVVNumber.touched)
-        "
-        class="invalid-feedback"
-      >
-        <div *ngIf="f.cardCVVNumber.errors" class="alert alert-danger">
-          Invalid CVV / CVC Number.
+        <input
+          class="form-control"
+          type="number"
+          formControlName="cardNumber"
+          placeholder="XXXX-XXXX-XXXX-XXXX"
+          [ngClass]="{
+            'is-invalid':
+              f.cardNumber.errors &&
+              (f.cardNumber.dirty || f.cardNumber.touched)
+          }"
+        />
+        <div
+          *ngIf="
+            !f.cardNumber.valid && (f.cardNumber.dirty || f.cardNumber.touched)
+          "
+          class="invalid-feedback"
+          style="max-width: 500px"
+        >
+          <div *ngIf="f.cardNumber.errors" class="alert alert-danger">
+            Invalid Card Number.
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="form-group p-mt-3">
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
-    <h3 class="center-block text-center">{{ displayMessage }}</h3>
-  </form>
-</div>
+      <div class="form-group expiry p-mt-3">
+        <label class="p-mb-2">Date of Expiration</label>
+        <div class="p-grid">
+          <div class="p-col-2">
+            <div class="box">
+              <input
+                class="form-control month"
+                type="number"
+                formControlName="expirationMonth"
+                placeholder="MM"
+                [ngClass]="{
+                  'is-invalid':
+                    !f.expirationMonth.valid &&
+                    (f.expirationMonth.dirty || f.expirationMonth.touched)
+                }"
+              />
+            </div>
+          </div>
+          <div class="p-col-2">
+            <div class="box">
+              <input
+                class="form-control year"
+                type="number"
+                formControlName="expirationYear"
+                placeholder="YYYY"
+                [ngClass]="{
+                  'is-invalid':
+                    f.expirationYear.errors &&
+                    (f.expirationYear.dirty || f.expirationYear.touched)
+                }"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          *ngIf="
+            (!f.expirationMonth.valid &&
+              (f.expirationMonth.dirty || f.expirationMonth.touched)) ||
+            (!f.expirationYear.valid &&
+              (f.expirationYear.dirty || f.expirationYear.touched))
+          "
+          class="invalid-feedback"
+        >
+          <div
+            *ngIf="f.expirationMonth.errors || f.expirationYear.errors"
+            class="alert alert-danger"
+          >
+            Invalid Date of Expiration.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group cvc p-mt-3">
+        <label class="p-mb-2">CVV/CVC</label>
+        <div class="p-grid">
+          <div class="p-col-2">
+            <div class="box">
+              <input
+                class="form-control"
+                type="number"
+                formControlName="cardCVVNumber"
+                placeholder="Enter CVV"
+                [ngClass]="{
+                  'is-invalid':
+                    f.cardCVVNumber.errors &&
+                    (f.cardCVVNumber.dirty || f.cardCVVNumber.touched)
+                }"
+              />
+              <div
+                *ngIf="
+                  !f.cardCVVNumber.valid &&
+                  (f.cardCVVNumber.dirty || f.cardCVVNumber.touched)
+                "
+                class="invalid-feedback"
+                style="min-width: 500px"
+              >
+                <div *ngIf="f.cardCVVNumber.errors" class="alert alert-danger">
+                  Invalid CVV / CVC Number.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group p-mt-3">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+      <h3 class="center-block text-center">{{ displayMessage }}</h3>
+    </form>
+  </div>
+</body>
